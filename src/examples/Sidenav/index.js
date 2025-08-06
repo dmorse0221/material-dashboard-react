@@ -49,7 +49,8 @@ import {
 
 function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const [controller, dispatch] = useMaterialUIController();
-  const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
+  const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor, direction } =
+    controller;
   const location = useLocation();
   const collapseName = location.pathname.replace("/", "");
 
@@ -144,7 +145,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     <SidenavRoot
       {...rest}
       variant="permanent"
-      ownerState={{ transparentSidenav, whiteSidenav, miniSidenav, darkMode }}
+      ownerState={{ transparentSidenav, whiteSidenav, miniSidenav, darkMode, direction }}
     >
       <MDBox pt={3} pb={1} px={4} textAlign="center">
         <MDBox

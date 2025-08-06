@@ -19,7 +19,7 @@ import { styled } from "@mui/material/styles";
 
 export default styled(Drawer)(({ theme, ownerState }) => {
   const { palette, boxShadows, transitions, breakpoints, functions } = theme;
-  const { transparentSidenav, whiteSidenav, miniSidenav, darkMode } = ownerState;
+  const { transparentSidenav, whiteSidenav, miniSidenav, darkMode, direction } = ownerState;
 
   const sidebarWidth = 250;
   const { transparent, gradients, white, background } = palette;
@@ -48,7 +48,7 @@ export default styled(Drawer)(({ theme, ownerState }) => {
     [breakpoints.up("xl")]: {
       boxShadow: transparentSidenav ? "none" : xxl,
       marginBottom: transparentSidenav ? 0 : "inherit",
-      left: "0",
+      ...(direction === "rtl" ? { right: "0" } : { left: "0" }),
       width: sidebarWidth,
       transform: "translateX(0)",
       transition: transitions.create(["width", "background-color"], {
@@ -70,7 +70,7 @@ export default styled(Drawer)(({ theme, ownerState }) => {
     [breakpoints.up("xl")]: {
       boxShadow: transparentSidenav ? "none" : xxl,
       marginBottom: transparentSidenav ? 0 : "inherit",
-      left: "0",
+      ...(direction === "rtl" ? { right: "0" } : { left: "0" }),
       width: pxToRem(96),
       overflowX: "hidden",
       transform: "translateX(0)",
